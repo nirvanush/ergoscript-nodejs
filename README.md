@@ -1,6 +1,6 @@
 ---
 
-# Ergoscriptjs
+# Ergoscript nodejs build with ergo-lib-wasm-nodejs
 
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]

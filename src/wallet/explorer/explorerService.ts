@@ -13,7 +13,6 @@ import {
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
 import { chunk, find, isEmpty, uniqWith } from 'lodash';
-import JSONBig from 'json-bigint';
 import { ErgoTx } from '../types/connector';
 import { asDict } from '../utils/serializer';
 import { isZero } from '../utils/bigNumbers';
@@ -211,7 +210,7 @@ class ExplorerService {
   ): Promise<ExplorerPostApiV1MempoolTransactionsSubmitResponse> {
     const response = await axios.post(
       `${API_URL}/api/v1/mempool/transactions/submit`,
-      JSONBig.stringify(signedTx),
+      JSON.stringify(signedTx),
       {
         'axios-retry': {
           retries: 15,

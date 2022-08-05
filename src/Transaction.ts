@@ -1,7 +1,6 @@
 import Box, { Asset, RegisterInput } from './Box';
 import { changeSplit, currentHeight, loadTokensFromWallet } from './helpers';
 import { MIN_FEE, FEE_ADDRESS } from './constants';
-import { wasmModule } from './ergolib';
 import { Address } from '@coinbarn/ergo-ts';
 import { ErgoWallet, UtxoBox } from './types';
 import { ErgoBox, Token } from './wallet/types/connector';
@@ -160,8 +159,6 @@ export default class Transaction {
   }
 
   private async _sendFunds(recipients: TxConfig[]) {
-    wasmModule.loadAsync();
-
     const optimalTxFee = MIN_FEE;
     const need = this._sumFunds(recipients);
     const creationHeight = await this.currentHeight();

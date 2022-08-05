@@ -7,7 +7,7 @@ import {
   TUPLE_PREFIX,
 } from '../constants/ergo';
 import { Registers } from '../types/connector';
-import { wasmModule } from '../../ergolib';
+import SigmaRust from 'ergo-lib-wasm-nodejs';
 import { isEmpty } from 'lodash';
 
 export function isColl(input: string): boolean {
@@ -113,7 +113,7 @@ export function extractPksFromRegisters(registers: Registers): string[] {
 
 export function extractPksFromP2SErgoTree(ergoTree: string): string[] {
   const pks: string[] = [];
-  const tree = wasmModule.SigmaRust.ErgoTree.from_base16_bytes(ergoTree);
+  const tree = SigmaRust.ErgoTree.from_base16_bytes(ergoTree);
   const len = tree.constants_len();
 
   for (let i = 0; i < len; i++) {
