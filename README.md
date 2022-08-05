@@ -11,7 +11,7 @@
 ## Install
 
 ```bash
-npm install ergoscript
+npm install ergoscript-nodejs
 ```
 
 ## Usage
@@ -55,7 +55,9 @@ const tx = new Transaction(recipients.map(rec => {
       tokens: [{ tokenId, amount: rec.amount }],
     },
     toAddress: rec.address,
-    additionalRegisters: {},
+    additionalRegisters: {
+      R4: { value: 40, type: 'Int' }
+    },
   }
 }));
 
